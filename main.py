@@ -2,8 +2,9 @@
 # Filename: run_selenium.py
 """
 
-def w():
-    time.sleep(1)
+search_query = "breaking bad"
+login = "yes"
+password = "yes"
 
 ## Run selenium and chrome driver to scrape data from cloudbytes.dev
 import time
@@ -29,11 +30,11 @@ browser = webdriver.Chrome(service=webdriver_service, options=chrome_options)
 browser.get("https://www.netflix.com/login")
 
 email = browser.find_element(By.XPATH, "//*[@id=\"id_userLoginId\"]")
-for c in "yes":
+for c in login:
     email.send_keys(c)
 
 password = browser.find_element(By.XPATH, "//*[@id=\"id_password\"]")
-for c in "yes":
+for c in password:
     password.send_keys(c)
 
 submit = browser.find_element(By.XPATH, "//*[@id=\"appMountPoint\"]/div/div[3]/div/div/div[1]/form/button")
@@ -52,7 +53,7 @@ search_button.click()
 time.sleep(1)
 
 search_field = browser.find_element(By.CSS_SELECTOR, 'input[data-uia="search-box-input"]')
-for c in "breaking bad":
+for c in search_query:
     search_field.send_keys(c)
 
 time.sleep(5)
